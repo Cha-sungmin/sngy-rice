@@ -1,0 +1,7 @@
+{
+  "name": "sngy-rice",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
