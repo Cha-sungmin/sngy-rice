@@ -14,7 +14,7 @@ export class Tab2Page {
 
   Join(){
     console.log(this.joinId);
-    this.navCtrl.navigateForward('/tab2');
+    this.navCtrl.navigateForward('');
   }
 
 }
