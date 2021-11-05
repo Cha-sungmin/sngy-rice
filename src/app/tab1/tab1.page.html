@@ -1,17 +1,153 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" scroll-y="true">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="lunch-label">
+        <ion-chip outline color="warning" class="Lunch" (click)="LunchAndDinner()"> 
+            <ion-icon name="sunny-outline"></ion-icon>
+            <ion-label>점심</ion-label>
+        </ion-chip>
+    </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-slides [options]="option" class="slideMarginTop">
+        <ion-slide>
+            <ion-card class="ion-card-slides">
+                <img src="https://www.vegilog.com/wp-content/uploads/2020/01/20200103-news02.jpg">
+            </ion-card>
+        </ion-slide>
+
+        <ion-slide>
+            <ion-card class="ion-card-slides">
+                <img src="https://file.mk.co.kr/meet/neds/2021/09/image_readtop_2021_904379_16321752624789928.jpg">
+            </ion-card>
+        </ion-slide>
+
+        <ion-slide>
+            <ion-card class="ion-card-slides">
+                <img src="https://gurunavi.com/ko/japanfoodie/article/sushi/img/sushi_01.jpg">
+            </ion-card>
+        </ion-slide>
+        
+        <ion-slide>
+            <ion-card class="ion-card-slides">
+                <img src="https://post-phinf.pstatic.net/MjAxODA0MTdfMjAx/MDAxNTIzOTQ0MTA1MTU2.I62RlGSw9bycOw5G5-wqW57w9Iq0gdpgkJaKszNBFxYg.C4qQPCCJBbxaXRBmy9aNsFq9l0glcLZ23Di0-F15hvkg.JPEG/shutterstock_723122572.jpg?type=w1200">
+            </ion-card>
+        </ion-slide>
+
+        <ion-slide>
+            <ion-card class="ion-card-slides">
+                <img src="https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/S9Y/image/76pr0EfQi6R21MMIyzefN9hiqIU.jpg">
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+    
+    <div class="scrolling-wrapper">
+        <!-- src를 푸드 아이콘 같은걸로 대체. -->
+        <div (click)="hambugarMove()" class="card">
+            <img class="img-icon" src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/aqduompvtygcdvtn.png">
+            <p><strong>버거</strong></p>
+        </div>
+        <div (click)="chinesMove()" class="card">
+            <img class="img-icon" src="https://cdn.crowdpic.net/detail-thumb/thumb_d_12DA88FC4589A289875315B852E563CB.jpg">
+            <p><strong>중식</strong></p>
+        </div>
+        <div (click)="bunsickMove()" class="card">
+            <img class="img-icon" src="https://pbs.twimg.com/profile_images/1348314030084026369/V9x6jY82_400x400.jpg">
+            <p><strong>분식</strong></p>
+        </div>
+        <div (click)="porkcutletMove()" class="card">
+            <img class="img-icon" src="https://i.ytimg.com/vi/gpWSnNYF-rU/maxresdefault.jpg">
+            <p><strong>돈까스</strong></p>
+        </div>
+        <div (click)="westernMove()" class="card">
+            <img class="img-icon" src="https://images.chosun.com/resizer/wsSVlD2KlkIAXTYSWUZxQSceAUE=/960x504/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/HS2MWHN32OMYMSDYNGYRIZCXNI.jpg">
+            <p><strong>양식</strong></p>
+        </div>
+        <div (click)="japaneseMove()" class="card">
+            <img class="img-icon" src="https://i.pinimg.com/564x/21/a0/fa/21a0fab7d8ad4c9fdd3341b3f0957f46.jpg">
+            <p><strong>일식</strong></p>
+        </div>
+        <div (click)="hansickMove()" class="card">
+            <img class="img-icon" src="https://i.pinimg.com/564x/39/05/a9/3905a9848278c6aee9747b79367f3b96.jpg">
+            <p><strong>한식</strong></p>
+        </div>
+    </div>
+
+    <ion-card button class="card-style">  
+        <img draggable="false" alt="피자" src="https://media.istockphoto.com/photos/fresh-italian-pizza-picture-id1045841884?k=20&m=1045841884&s=612x612&w=0&h=NMPrk4Vd9j3FYICHwBIwCcOvxrY88Ne3mLLzAHpoZ9s=">
+        <ion-card-header class="card-header-style">
+            <ion-card-title>피자</ion-card-title>
+            <div class="ion-card-subtitle">
+                <ion-icon name="star"></ion-icon><span class="text">4.7점</span>     
+                <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">20~30분</span>  
+            </div>  
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card button class="card-style">  
+        <img draggable="false" alt="국밥" src="https://blog.kakaocdn.net/dn/liULB/btqEFJs5PyB/NSyv9Qfiqs5vNKd0PJ712k/img.jpg">
+        <ion-card-header class="card-header-style">
+            <ion-card-title>국밥</ion-card-title>
+            <div class="ion-card-subtitle">
+                <ion-icon name="star"></ion-icon><span class="text">48점</span>     
+                <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">25~40분</span>  
+            </div>  
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card button class="card-style">  
+        <img draggable="false" alt="돈까스" src="https://recipe1.ezmember.co.kr/cache/recipe/2019/01/12/b9343d314206275c1b6d0d0c4fcc2ce71.jpg">
+        <ion-card-header class="card-header-style">
+            <ion-card-title>돈까스</ion-card-title>
+            <div class="ion-card-subtitle">
+                <ion-icon name="star"></ion-icon><span class="text">4.8점</span>     
+                <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">25~50분</span>  
+            </div>  
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card button class="card-style">  
+        <img draggable="false" alt="햄버거" src="https://www.sommeliertimes.com/news/photo/202001/15410_32403_5941.jpg">
+        <ion-card-header class="card-header-style">
+            <ion-card-title>햄버거</ion-card-title>
+            <div class="ion-card-subtitle">
+                <ion-icon name="star"></ion-icon><span class="text">4.7점</span>     
+                <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">15~35분</span>  
+            </div>  
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card button class="card-style">  
+        <img draggable="false" alt="중국집" src="https://i.pinimg.com/originals/eb/93/77/eb9377587cc7a6ae6632648d64a62469.jpg">
+        <ion-card-header class="card-header-style">
+            <ion-card-title>짜장면</ion-card-title>
+            <div class="ion-card-subtitle">
+                <ion-icon name="star"></ion-icon><span class="text">4.5점</span>     
+                <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">20~60분</span>  
+            </div>  
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card button class="card-style">  
+        <img draggable="false" alt="떡볶이" src="https://mblogthumb-phinf.pstatic.net/MjAyMDA5MjRfMjUx/MDAxNjAwOTIzNDEzNjM4.6b4MEyLEC7IiUJf-k-_Mk-qVgApkQxhdD4ngMTmDhnUg.LPk3TA29oLmT8ITjMubz9k-ElmyNGGO53uq4efdx2GUg.JPEG.9550jhj/IMG_8296.jpg?type=w800">
+        <ion-card-header class="card-header-style">
+            <ion-card-title>떡볶이</ion-card-title>
+            <div class="ion-card-subtitle">
+                <ion-icon name="star"></ion-icon><span class="text">4.7점</span>     
+                <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">20~40분</span>  
+            </div>  
+        </ion-card-header>
+    </ion-card>
+
+    <ion-card button class="card-style">  
+        <img draggable="false" alt="카레" src="https://us.123rf.com/450wm/yasuhiroamano/yasuhiroamano1503/yasuhiroamano150300188/37792098-%EC%9D%BC%EB%B3%B8%EC%96%B4-%EC%B9%B4%EB%A0%88-%EC%B9%B4%EB%A0%88%EB%9D%BC%EC%9D%B4%EC%8A%A4.jpg?ver=6">
+        <ion-card-header class="card-header-style">
+            <ion-card-title>카레</ion-card-title>
+            <div class="ion-card-subtitle">
+                <ion-icon name="star"></ion-icon><span class="text">4.9점</span>     
+                <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">20~35분</span>  
+            </div>  
+        </ion-card-header>
+    </ion-card>
+
+    
 </ion-content>
+

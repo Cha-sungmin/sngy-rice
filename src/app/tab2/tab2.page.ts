@@ -7,6 +7,14 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
+  joinId:any;
+  navCtrl: any;
+
   constructor() {}
+
+  Join(){
+    console.log(this.joinId);
+    this.navCtrl.navigateForward('/tab2');
+  }
 
 }

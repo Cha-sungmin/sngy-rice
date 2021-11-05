@@ -1,0 +1,148 @@
+<ion-content [fullscreen]="true" scroll-y="true">
+
+  <div class="lunch-label">
+    <ion-chip class="Lunch chip-style" (click)="LunchAndDinner()"> 
+        <ion-icon class="icon-style" name="moon-outline"></ion-icon>
+        <ion-label class="label-style">밤</ion-label>
+    </ion-chip>
+  </div>
+  
+  <ion-slides [options]="option" >
+      <ion-slide>
+          <ion-card class="ion-card-slides">
+              <img src="http://img.khan.co.kr/news/2021/07/14/2021071501001702300164451.jpg">
+          </ion-card>
+      </ion-slide>
+
+      <ion-slide>
+          <ion-card class="ion-card-slides">
+              <img src="https://img.insight.co.kr/static/2018/05/13/700/og34gmm3t4h18df6mcc4.jpg">
+          </ion-card>
+      </ion-slide>
+
+      <ion-slide>
+          <ion-card class="ion-card-slides">
+              <img src="https://t2.daumcdn.net/thumb/R720x0/?fname=http://t1.daumcdn.net/brunch/service/user/2a4t/image/agrklWA5CcHDdPGYZSqfIucQgr0.JPG">
+          </ion-card>
+      </ion-slide>
+      
+      <ion-slide>
+          <ion-card class="ion-card-slides">
+              <img src="https://i.pinimg.com/564x/7b/ed/44/7bed44a53570922a1e42a01941f9b3a2.jpg">
+          </ion-card>
+      </ion-slide>
+
+      <ion-slide>
+          <ion-card class="ion-card-slides">
+              <img src="https://s3.ap-northeast-2.amazonaws.com/event-localnaeil/FileData/Article/202005/d4bc58f6-c585-4a83-a09a-7a6e0e2dbe0e.jpg">
+          </ion-card>
+      </ion-slide>
+  </ion-slides>
+  
+  <div class="scrolling-wrapper">
+      <div (click)="sulMove()" class="card">
+          <img class="img-icon" src="http://mashija.com/wp-content/uploads/2021/01/5.jpg">
+          <p><strong>술</strong></p>
+      </div>
+      <div (click)="chikenMove()" class="card">
+          <img class="img-icon" src="https://st3.depositphotos.com/23848204/31779/i/1600/depositphotos_317794516-stock-photo-fried-chicken-black-background.jpg">
+          <p><strong>치킨</strong></p>
+      </div>
+      <div (click)="bunsickMove()" class="card">
+          <img class="img-icon" src="https://pbs.twimg.com/profile_images/1348314030084026369/V9x6jY82_400x400.jpg">
+          <p><strong>분식</strong></p>
+      </div>
+      <div (click)="japaneseMove()" class="card">
+        <img class="img-icon" src="https://i.pinimg.com/564x/21/a0/fa/21a0fab7d8ad4c9fdd3341b3f0957f46.jpg">
+        <p><strong>일식</strong></p>
+      </div>
+      <div (click)="gimtangMove()" class="card">
+        <img class="img-icon" src="https://i.pinimg.com/564x/78/8f/91/788f91a403c591136fd808907fec1585.jpg">
+        <p><strong>찜/탕</strong></p>
+      </div>
+      <div (click)="hambugarMove()" class="card">
+        <img class="img-icon" src="https://mp-seoul-image-production-s3.mangoplate.com/keyword_search/meta/pictures/aqduompvtygcdvtn.png">
+        <p><strong>버거</strong></p>
+      </div>
+      <div (click)="porkcutletMove()" class="card">
+          <img class="img-icon" src="https://i.ytimg.com/vi/gpWSnNYF-rU/maxresdefault.jpg">
+          <p><strong>돈까스</strong></p>
+      </div>
+      <div (click)="westernMove()" class="card">
+          <img class="img-icon" src="https://images.chosun.com/resizer/wsSVlD2KlkIAXTYSWUZxQSceAUE=/960x504/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosun/HS2MWHN32OMYMSDYNGYRIZCXNI.jpg">
+          <p><strong>양식</strong></p>
+      </div>
+      <div (click)="hansickMove()" class="card">
+          <img class="img-icon" src="https://i.pinimg.com/564x/39/05/a9/3905a9848278c6aee9747b79367f3b96.jpg">
+          <p><strong>한식</strong></p>
+      </div>
+  </div>
+
+
+  <ion-card button class="card-style" >  
+      <img draggable="false" alt="찜/탕" src="https://blog.kakaocdn.net/dn/4v5SZ/btqBmUQF7YF/jcMzHBbyJC0pXkCf3It7N1/img.jpg">
+      <ion-card-header class="card-header-style">
+          <ion-card-title>술</ion-card-title>
+          <div class="ion-card-subtitle">
+            <ion-icon name="star"></ion-icon><span class="text">5점</span>     
+            <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">10~20분</span>  
+          </div>  
+      </ion-card-header>
+  </ion-card>
+
+  <ion-card button class="card-style" >  
+    <img draggable="false" alt="족발" src="http://foodyap.co.kr/shopimages/goldplate1/030001000014.jpg?1560851911">
+    <ion-card-header class="card-header-style">
+        <ion-card-title>족발</ion-card-title>
+        <div class="ion-card-subtitle">
+          <ion-icon name="star"></ion-icon><span class="text">4.9점</span>     
+          <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">30~50분</span>  
+        </div>  
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card button class="card-style" >  
+    <img draggable="false" alt="찜/탕" src="https://ww.namu.la/s/c936ceb9f23d22e50b151bf10d0734b265868128b6746f81c959ffb0b544573cd4a9da7eff22969f39c0961c49325796c7ed09a0b6726e7733be0c294aa71a82287dac5e5de6edd376a13695b267401496f534ad04fb71a268094b812282c923">
+    <ion-card-header class="card-header-style">
+        <ion-card-title>찜/탕</ion-card-title>
+        <div class="ion-card-subtitle">
+          <ion-icon name="star"></ion-icon><span class="text">4.6점</span>     
+          <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">40~50분</span>  
+        </div>  
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card button class="card-style" >  
+    <img draggable="false" alt="삼겹살" src="https://w.namu.la/s/768f1fdb6b65fc9fa7b6e2842523512f1a29bd510e63fe014b150f0ef821824d677696bd7acd360119e14de9bba6774a4c2ed567e81df279513767992f151ef8ebdd274ca1c8098544217566f31513951f0122ce712c6dadfecebfee0cb0354e">
+    <ion-card-header class="card-header-style">
+        <ion-card-title>삼겹살</ion-card-title>
+        <div class="ion-card-subtitle">
+          <ion-icon name="star"></ion-icon><span class="text">4.9점</span>     
+          <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">20~35분</span>  
+        </div>  
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card button class="card-style" >  
+    <img draggable="false" alt="닭발" src="https://crcf.cookatmarket.com/product/images/2019/11/tudi_1574662390_2739_720.jpg">
+    <ion-card-header class="card-header-style">
+        <ion-card-title>닭발</ion-card-title>
+        <div class="ion-card-subtitle">
+          <ion-icon name="star"></ion-icon><span class="text">4.4점</span>     
+          <ion-icon name="time-outline" class="time-icon"></ion-icon> <span class="text">30~50분</span>  
+        </div>  
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card button class="card-style" >  
+    <img draggable="false" alt="피자" src="https://media.istockphoto.com/photos/fresh-italian-pizza-picture-id1045841884?k=20&m=1045841884&s=612x612&w=0&h=NMPrk4Vd9j3FYICHwBIwCcOvxrY88Ne3mLLzAHpoZ9s=">
+    <ion-card-header class="card-header-style">
+        <ion-card-title>피자</ion-card-title>
+        <div class="ion-card-subtitle">
+          <ion-icon name="star"></ion-icon><span class="text">4.6점</span>     
+          <ion-icon name="time-outline" ></ion-icon> <span class="text">20~30분</span>  
+        </div>  
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>
