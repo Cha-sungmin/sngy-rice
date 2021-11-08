@@ -7,43 +7,63 @@
         <ion-row>
           <ion-col>이름</ion-col>
           <ion-col>메뉴</ion-col>
-          <ion-col>가격</ion-col>
           <ion-col>수량</ion-col>
+          <ion-col>가격</ion-col>
       </ion-row>
     </ion-grid>
   </div>
 
-  <di class="table">
+  <div class="table">
     <ion-grid>
       <ion-row class="order-menu">
         <ion-col>차성민</ion-col>
         <ion-col>짜장면</ion-col>
-        <ion-col>5,500원</ion-col>
-        <ion-col>2</ion-col>
-      </ion-row>
-      <ion-row class="order-menu">
-        <ion-col>민성차</ion-col>
-        <ion-col>볶음밥</ion-col>
-        <ion-col>5,000원</ion-col>
         <ion-col>1</ion-col>
+        <ion-col>6,000원</ion-col>
       </ion-row>
       <ion-row class="order-menu">
-        <ion-col>성차민</ion-col>
-        <ion-col>탕수육</ion-col>
-        <ion-col>13,000원</ion-col>
-        <ion-col>1</ion-col>
-      </ion-row>
-      <ion-row class="order-menu">
-        <ion-col>차성</ion-col>
+        <ion-col>요릭</ion-col>
         <ion-col>차돌짬뽕</ion-col>
-        <ion-col>8,000원</ion-col>
         <ion-col>1</ion-col>
+        <ion-col>8,000원</ion-col>
       </ion-row>
       <ion-row class="order-menu">
-        <ion-col>성민</ion-col>
-        <ion-col>유니짜장</ion-col>
+        <ion-col>유미</ion-col>
+        <ion-col>차돌짬뽕</ion-col>
+        <ion-col>1</ion-col>
+        <ion-col>8,000원</ion-col>
+      </ion-row>
+      <ion-row class="order-menu">
+        <ion-col>갈리오</ion-col>
+        <ion-col>짜장면</ion-col>
+        <ion-col>1</ion-col>
+        <ion-col>6,000원</ion-col>
+      </ion-row>
+      <ion-row class="order-menu">
+        <ion-col>뽀삐</ion-col>
+        <ion-col>짬뽕</ion-col>
+        <ion-col>1</ion-col>
         <ion-col>7,000원</ion-col>
-        <ion-col>3</ion-col>
+      </ion-row>
+      <ion-row class="order-menu">
+        <ion-col>룰루</ion-col>
+        <ion-col>계란볶음밥</ion-col>
+        <ion-col>1</ion-col>
+        <ion-col>5,000원</ion-col>
+      </ion-row>
+      <ion-row class="order-menu">
+        <ion-col>티모</ion-col>
+        <ion-col>탕수육</ion-col>
+        <ion-col>1</ion-col>
+        <ion-col>12,000원</ion-col>
+      </ion-row>
+      <ion-row class="result">
+        <ion-col class="all-style">총 인원</ion-col>
+        <ion-col>7명</ion-col>
+      </ion-row>
+      <ion-row class="result">
+        <ion-col class="all-style">총 금액</ion-col>
+        <ion-col>52,000원</ion-col>
       </ion-row>
     </ion-grid>
     
@@ -51,16 +71,11 @@
     <ion-grid style="position: fixed; bottom: 0; width: 100%;">
       <ion-row>
         <ion-col style="padding-bottom: 0;">
-          <ion-button (click)="showAlert()" expand="block" fill="outline" strong="true" class="accept-button">네</ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col style="padding-top: 0;">
-          <ion-button expand="block" fill="solid" strong="true" class="refuse-button" (click)="close()">아니요</ion-button>
+          <ion-button (click)="showAlert()" expand="block" fill="outline" strong="true" class="accept-button">주문완료</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </di>
+  </div>
 
   
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -39,7 +40,7 @@ export class Tab1Page {
   }
 
   LunchAndDinner(){
-    this.router.navigate(['/tab4']);
+    this.router.navigate(['tab4']);
   }
 
   option = {

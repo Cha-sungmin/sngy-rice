@@ -8,6 +8,15 @@
   border-bottom: solid 1px black;
 }
 
+.result {
+  padding: 0px;
+  border-bottom: solid 1px black;
+}
+
+.all-style {
+  background-color: #d3d3d3;
+}
+
 .table {
   text-align: center;
 }
@@ -18,8 +27,8 @@
   --box-shadow: none;
 }
 
-.refuse-button {
-  --background: #00bfff;
-  --color: white;
-  --box-shadow: none;
-}
+// .refuse-button {
+//   --background: #00bfff;
+//   --color: white;
+//   --box-shadow: none;
+// }

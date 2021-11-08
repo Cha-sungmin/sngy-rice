@@ -12,7 +12,7 @@ export class Tab4Page implements OnInit {
   ngOnInit() {
   }
 
-  constructor(private router: Router,) {}
+  constructor(private router: Router, private navCtrl: NavController) {}
 
   hambugarMove(){
     this.router.navigate(['/dark-hambugar']);
@@ -54,9 +54,10 @@ export class Tab4Page implements OnInit {
     this.router.navigate(['/chikien'])
   }
 
-  LunchAndDinner(){
-    this.router.navigate(['/tab1']);
+  goBack(){
+    this.navCtrl.back();
   }
+
 
   option = {
     slidesPerView: 1.2,
