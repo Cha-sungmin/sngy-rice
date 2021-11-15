@@ -5,8 +5,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { ModalpagePage } from '../modalpage/modalpage.page';
+import { ModalpagePageModule } from '../modalpage/modalpage.module';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -14,8 +18,11 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab2PageRoutingModule
+    Tab2PageRoutingModule,
+    ReactiveFormsModule
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page,  ModalpagePage],
+  entryComponents: [Tab2Page, ModalpagePage]
 })
 export class Tab2PageModule {}
+

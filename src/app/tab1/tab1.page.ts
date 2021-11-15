@@ -40,7 +40,7 @@ export class Tab1Page {
   }
 
   LunchAndDinner(){
-    this.router.navigate(['tab4']);
+    this.router.navigate(['/tab4']);
   }
 
   option = {
