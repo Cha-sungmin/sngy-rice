@@ -5,8 +5,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-import { ModalpagePage } from '../modalpage/modalpage.page';
-import { ModalpagePageModule } from '../modalpage/modalpage.module';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 
@@ -21,8 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     Tab2PageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [Tab2Page,  ModalpagePage],
-  entryComponents: [Tab2Page, ModalpagePage]
+  declarations: [Tab2Page],
+  entryComponents: [Tab2Page]
 })
 export class Tab2PageModule {}
 

@@ -1,15 +1,12 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
-import axios from "axios";
 import {NavController} from '@ionic/angular';
-
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from "@angular/forms";
+// import { FormGroup, FormBuilder } from "@angular/forms";
 import { UserCrudService } from './../services/user-crud.service';
-
 import { ModalController } from '@ionic/angular';
-import { ModalpagePage } from '../modalpage/modalpage.page';
-
+import { HttpClient } from '@angular/common/http';
+import { Storage } from '@capacitor/storage';
 
 @Component({
   selector: 'app-tab2',
@@ -17,84 +14,64 @@ import { ModalpagePage } from '../modalpage/modalpage.page';
   styleUrls: ['tab2.page.scss']
 })
 
-export class Tab2Page {
+export class Tab2Page{
 
-  Menus: any = [];
+  url: string;
+
+  menus: any = [];
+  datas: any = [];
 
   taskList = [];
-
-  joinId:any;
-
-  menuForm: FormGroup;
   taskName: any;
+
+  today: string;
+  // joinId:any;
+  // menuForm: FormGroup;
+
+  userName: string;
 
   constructor(
     private alertController: AlertController,
     public modalController: ModalController,
     public navCtrl: NavController,
     private router: Router,
-    public formBuilder: FormBuilder,
-    public Loading: LoadingController,
-    private zone: NgZone,
+    public http: HttpClient,
+    // public formBuilder: FormBuilder,
+    // public Loading: LoadingController,
+    // private zone: NgZone,
     private userCrudService: UserCrudService
-    ) {
-      // this.menuForm = this.formBuilder.group({
-      //   menu: [''],
-      //   cnt: [''],
-      //   price: ['']
-      // })
-    }
+  ) {
+    this.setToday();
+    this.setUserName();
+  }
 
-    addTask() {
-      if (this.taskName.length > 0) {
-          let task = this.taskName;
-          this.taskList.push(task);
-          this.taskName = "";
-      }
-    }
-
-    async addModal() {
-      const modal = await this.modalController.create({
-        component: ModalpagePage,
-        animated: true,
-        cssClass: 'dialog-modal'
-      });
-      return await modal.present();
-    }
-    
-  // onsubmit(){
-  //   if (!this.menuForm.valid) {
-  //     return false;
-  //   } else {
-  //     this.userCrudService.createMenu(this.menuForm.value)
-  //       .subscribe((Response) => {
-  //         this.zone.run(()=> {
-  //           this.menuForm.reset();
-  //           this.router.navigate(['/tab2']);//여기 리스트 바꾸기
-  //         })
-  //       });
+  // addTask() {
+  //   if (this.taskName.length > 0) {
+  //       let task = this.taskName;
+  //       this.taskList.push(task);
+  //       this.taskName = "";
   //   }
   // }
 
-  deleteTask(index: number){
-    this.taskList.splice(index, 1);
-  }
+  // deleteTask(index: number){
+  //   this.taskList.splice(index, 1);
+  // }
 
-  async updateTask(index: string | number) {
-    let alert = await this.alertController.create({
-      header: '메뉴수정',
-      subHeader: '수정할 메뉴의 이름을 입력해주세요.',
-      mode: 'ios',
-      inputs: [{ name: 'editTask', placeholder: '예) 짜장면' }],
-      buttons: [{ text: '취소', role: 'cancel' },
-                { text: '확인', handler: data => {
-                  this.taskList[index] = data.editTask; }
-                }
-                ]
-    });
-    alert.present();
-  }
-  
+  // async updateTask(index: string | number) {
+  //   let alert = await this.alertController.create({
+  //     header: '메뉴수정',
+  //     subHeader: '수정할 메뉴의 이름을 입력해주세요.',
+  //     mode: 'ios',
+  //     inputs: [{ name: 'editTask', placeholder: '예) 짜장면' }],
+  //     buttons: [{ text: '취소', role: 'cancel' },
+  //               { text: '확인', handler: data => {
+  //                 this.taskList[index] = data.editTask; }
+  //               }
+  //               ]
+  //   });
+  //   alert.present();
+  // }
+
   async MenuAdd() {
     const alert = await this.alertController.create({
       cssClass: 'MenuAdd',
@@ -126,22 +103,22 @@ export class Tab2Page {
           text: '확인',
           cssClass: 'sucsse',
           //handler는 버튼을 눌렀을때 발생함
-          handler: () => {
-            this.addTask();
+          handler: (data) => {
+            this.postMenuMenu({
+              day: this.today, name: this.userName, menu: data.menu,
+              cnt: data.count, price: data.price
+            });
+            this.pageReload();
           }
         },
         {
           text: '취소',
           cssClass: 'cancel',
-          handler: () => {
-            console.log('메뉴 추가 취소');
-          }
-        }        
+          handler: () => {}
+        }
       ]
     });
-    
     await alert.present();
-
   }
 
   async MenuFix() {
@@ -184,12 +161,10 @@ export class Tab2Page {
           handler: () => {
             console.log('메뉴 수정 취소');
           }
-        }        
+        }
       ]
     });
-    
     await alert.present();
-
   }
 
   async Check() {
@@ -200,57 +175,68 @@ export class Tab2Page {
       mode: 'ios',
       buttons: ['확인'],
     });
-    
     await alert.present();
   }
 
-  back(){
-    this.navCtrl.back();
+  postMenuMenu(data: { day: string; name: string; menu: any; cnt: any; price: any; }) {
+    this.userCrudService.postMenu(data).subscribe((response) => {
+      this.menus = response;
+      console.log('menu', response);
+    });
   }
 
-  // ionViewDidEnter() {
-  //   this.userCrudService.getMenus().subscribe((response) => {
-  //     this.Menus = response;
-  //   })
-  // }
+  getMenuMenu() {
+    this.userCrudService.getMenu(this.today).subscribe((response) => {
+      this.datas= response;
+      console.log('menu',this.datas);
+    });
+  }
 
-  // removeUser(menu: { id: string; }, i: any) {
-  //   if (window.confirm('Are you sure')) {
-  //     this.userCrudService.deleteMenu(menu.id)
-  //     .subscribe(() => {
-  //         this.ionViewDidEnter();
-  //         console.log('메뉴 삭제')
-  //       }
-  //     )
-  //   }
-  // }
+  ionViewDidEnter() {
+    this.getMenuMenu();
+  }
 
+// 김하늘이 보내준 코드.
+// 오늘 날짜를 string 형태로 today에 저장해준다.
+setToday() {
+  const newDate = new Date();
+  const year = newDate.getFullYear();
+  const month = ('0' + (newDate.getMonth() + 1)).slice(-2);
+  const date = ('0' + newDate.getDate()).slice(-2);
+  const hour = newDate.getHours();
+
+  // 점심과 저녁을 맨 앞 1자리의 알파벳으로 구분한다.
+  if (hour < 16) {
+    this.today = 'L' + year + month + date;
+  } else {
+    this.today = 'D' + year + month + date;
+  }
+
+  this.url = `https://api-dev.sngy.io/v1/study/board?${this.today}`;
 }
 
+  setUserName() {
+    getValue('name').then((data: any) => {
+      this.userName = data;
+      console.log(this.userName);
+    });
+  }
 
+pageReload() {
+  this.getMenuMenu();
+  // this.get불러오는거();
+  location.reload();
+}
+}
 
+//  로그인 관련 
 
-// //get
-// fetch("https://api-dev.sngy.io/v1/study/board?day=2021-11-09")
-//   .then((Response) =>Response.json())
-//   .then((data) => console.log(data));
+const getValue = async (key: string) => {
+  const { value } = await Storage.get({ key: key });
+  return value;
+};
 
-
-// //post
-// fetch("https://api-dev.sngy.io/v1/study/board", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify({
-//     "day": "2021-11-09",
-//     "name": "차성민",
-//     "menu": "삼선자장면",
-//     "cnt": 1,
-//     "price": 8500
-//   }),
-// })
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
-
-
+const removeValue = async (key: string) => {
+  await Storage.remove({ key: key });
+};
+  

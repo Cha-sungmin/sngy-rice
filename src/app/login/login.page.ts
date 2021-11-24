@@ -7,21 +7,25 @@ import { Storage } from '@capacitor/storage';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
 export class LoginPage{
   userName: any;
-  
-  constructor(private navCtrl: NavController) {} 
+
+  constructor(private navCtrl: NavController) { }
 
   goBack() {
     if (this.userName) {
-//       console.log(`${ this.userName }님 환영합니다!`);
       setValue('name', this.userName);
-      // getValue('name');
+      this.navCtrl.back();
     } else {
-      console.log(`userName is null`);
+      console.log('이름 입력하고 다시오셈')
     }
-    this.navCtrl.back();
   }
+
+  onChange(e) {
+    this.userName = e.target.value;
+  }
+
 }
 
 const setValue = async (key: string, value: any) => {
@@ -33,6 +37,5 @@ const setValue = async (key: string, value: any) => {
 
 const getValue = async (key: string) => {
   const { value } = await Storage.get({ key: key });
-  console.log(`${ value }님 환영합니다!`);
   return value;
 };
